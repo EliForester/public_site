@@ -13,7 +13,7 @@ from sklearn.linear_model import LinearRegression
 import Quandl
 import datetime
 
-df_merged_all = pd.read_csv('https://github.com/EliForester/kcmo_311_data_viewer/raw/master/data_311.csv')
+df_merged_all = pd.read_csv('https://github.com/EliForester/public_site/raw/master/data_311.csv')
 df_merged_all.reset_index()
 df_merged_all['CREATION DATE'] = pd.to_datetime(df_merged_all['CREATION DATE'],format='%Y-%m-%d')
 
