@@ -1,0 +1,21 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}Eli Forester{% endblock %}
+{% block styles %}
+{{ super() }}
+<link href="/static/default.css" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block navbar %}
+<div class="navbar navbar-fixed-top">
+  {{ nav.navbar.render() }}
+</div>
+{% endblock %}
+{% block content %}
+<center>
+<p><h1>Eli Justin Forester</h1>
+</p>
+Site written with<br>
+<a href="https://www.python.org/">Python<br><img src="/static/images/python-logo.png" /></a><br>
+<a href="http://flask.pocoo.org/">Flask<br><img src="/static/images/flask.svg" /></a><br>
+<a href="http://bokeh.pydata.org/en/latest/">Bokeh<br><img src="/static/images/bokeh_logo.png" /></a><br>
+</center>
+{% endblock %}

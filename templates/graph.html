@@ -1,0 +1,20 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}Eli Forester{% endblock %}
+{% block styles %}
+{{ super() }}
+<link href="/static/default.css" rel="stylesheet" type="text/css">
+<link href="http://cdn.pydata.org/bokeh/release/bokeh-0.11.1.min.css" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block navbar %}
+<div class="navbar navbar-fixed-top">
+    {{ nav.navbar.render() }}
+</div>
+{% endblock %}
+{% block content %}
+    {{ div | safe }}
+{% endblock %}
+{% block scripts %}
+{{super() }}
+<script src="http://cdn.pydata.org/bokeh/release/bokeh-0.11.1.min.js"></script>
+    {{ script | safe }}
+{% endblock %}

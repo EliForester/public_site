@@ -1,0 +1,49 @@
+{% extends "bootstrap/base.html" %}
+{% block styles %}
+{{ super() }}
+<link href="/static/default.css" rel="stylesheet" type="text/css">
+<link href="/static/bootstrap-datepicker3.css" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block navbar %}
+<div class="navbar navbar-fixed-top">
+  {{ nav.navbar.render() }}
+</div>
+{% endblock %}
+{% block content %}
+<div>
+<h3>Plotting Kansas City's 311 report data.</h3><br>
+311 data is from Kansas City, Missouri's <a href="http://data.kcmo.org/">OPENDATA KC</a><br>
+Temperature data is the National Climatic Data Center's <a href="http://www.ncdc.noaa.gov/cdo-web/">Climate Data Online</a>
+<p>
+Select data type:
+<form action="" method="POST">
+<select name="chart_name">
+{% for request_type in request_types %}
+<option value="{{ request_type }}">{{ request_type }}</option>
+{% endfor %}
+</select><br>
+<input type="checkbox" name="checkbox" value="include_temp">Graph Temperature<br>
+<input type="checkbox" name="checkbox" value="include_mean">Graph Mean<br>
+<input type="checkbox" name="checkbox" value="show_lr">Plot Linear Regression<br>
+<input type="checkbox" name="checkbox" value="show_dt">Plot Decision Tree Predictor<br>
+Date range:<br>
+<div class="input-daterange input-group" id="datepicker">
+    <input type="text" class="input-sm form-control" name="start" data-provide="datepicker-inline" />
+    <span class="input-group-addon">to</span>
+    <input type="text" class="input-sm form-control" name="end" data-provide="datepicker-inline" />
+</div>
+<button type="submit" value="graph">Graph</button>
+</form>
+<b><i>Graph tools (zoom/pan/etc.) may not work in Chrome</i></b><br>
+<i>As 2015's data set is not complete yet, only 2014 data was used.</i><br>
+<i>These charts reflect only weekday data</i></div>
+{% endblock %}
+{% block scripts %}
+{{ super() }}
+<script src="/static/scripts/bootstrap-datepicker.js"></script>
+<script>
+$('.input-daterange').datepicker({
+    startDate: "01/01/2014",
+    endDate: "12/31/2014"
+});</script>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}Eli Forester{% endblock %}
+{% block styles %}
+{{ super() }}
+<link href="/static/default.css" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block navbar %}
+<div class="navbar navbar-fixed-top">
+  {{ nav.navbar.render() }}
+</div>
+{% endblock %}
+{% block content %}
+<h2>{{ error_text }}</h2>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "bootstrap/base.html" %}
+{% block styles %}
+{{ super() }}
+<link href="/static/default.css" rel="stylesheet" type="text/css">
+<link href="/static/bootstrap-datepicker3.css" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block navbar %}
+<div class="navbar navbar-fixed-top">
+  {{ nav.navbar.render() }}
+</div>
+{% endblock %}
+{% block content %}
+<div>
+<h3>Plotting stock price data</h3><br>
+Stock data is via the <a href="https://www.quandl.com/">Quandl API</a><br>
+<p>
+Symbol (US stocks only):
+    <form action="" method="POST">
+    <input type="text" name="symbol">
+<br>
+<input type="checkbox" name="checkbox" value="include_bb">Plot Bollinger Bands <i>Requires at least 20 days of data</i><br>
+Date range:<br>
+<div class="input-daterange input-group" id="datepicker">
+    <input type="text" class="input-sm form-control" name="start" data-provide="datepicker-inline" />
+    <span class="input-group-addon">to</span>
+    <input type="text" class="input-sm form-control" name="end" data-provide="datepicker-inline" />
+</div>
+<button type="submit" value="graph">Graph</button>
+</form>
+{% endblock %}
+{% block scripts %}
+{{ super() }}
+<script src="/static/scripts/bootstrap-datepicker.js"></script>
+<script>
+$('.input-daterange').datepicker({
+    orientation: "bottom auto"
+});</script>
+{% endblock %}
